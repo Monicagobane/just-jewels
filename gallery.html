@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Just-Jewels Gallery — Behind the scenes, featured pieces, and the beauty of handcrafted jewellery." />
+  <title>Gallery | Just-Jewels</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .gallery-grid__item {
+      min-height: 260px;
+    }
+    /* Placeholder SVG fills for gallery */
+    .gal-bg-1 { background: linear-gradient(135deg, #D4849C 0%, #E8C0CC 100%); }
+    .gal-bg-2 { background: linear-gradient(135deg, #8B4A6B 0%, #C9A96E 100%); }
+    .gal-bg-3 { background: linear-gradient(135deg, #6B7A9B 0%, #B0C0D8 100%); }
+    .gal-bg-4 { background: linear-gradient(135deg, #5C2B44 0%, #8B4A6B 100%); }
+    .gal-bg-5 { background: linear-gradient(135deg, #C9A96E 0%, #E8D090 100%); }
+    .gal-bg-6 { background: linear-gradient(135deg, #9B6BBF 0%, #D4B8E8 100%); }
+    .gal-bg-7 { background: linear-gradient(135deg, #3A2030 0%, #8B4A6B 100%); }
+    .gal-bg-8 { background: linear-gradient(135deg, #B0A0C9 0%, #E4D8F4 100%); }
+
+    .gal-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 24px 20px;
+      background: linear-gradient(to top, rgba(42,32,40,0.7) 0%, transparent 100%);
+      z-index: 2;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .gallery-grid__item:hover .gal-label { transform: translateY(0); }
+    .gal-label p {
+      font-family: var(--font-display);
+      color: #fff;
+      font-size: 1.1rem;
+      margin: 0;
+      font-weight: 400;
+    }
+    .gal-label span {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .gal-svg-inner {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+    }
+
+    .behind-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .behind-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .behind-item:hover .gallery-grid__overlay { background: rgba(42,32,40,0.4); }
+    .behind-item:hover .gallery-grid__overlay span { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .behind-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" style="color:var(--rose-dark)">Just-Jewels</a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="navbar__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="collection.html">Collection</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:var(--nav-h)">
+  <div class="container">
+    <div class="page-hero__content anim-fade-up">
+      <p class="eyebrow">Visual stories</p>
+      <h1>The Gallery</h1>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN GALLERY -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <p class="eyebrow">Featured pieces</p>
+      <h2>Jewellery in its element</h2>
+      <hr class="gold-rule" />
+    </div>
+
+    <div class="gallery-grid" role="list">
+
+      <!-- Wide item (spans 2 cols) -->
+      <div class="gallery-grid_item gallery-grid_item--wide gal-bg-2" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Signature collection banner">
+            <circle cx="200" cy="140" r="80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            <polygon points="200,70 270,105 270,175 200,210 130,175 130,105" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+            <ellipse cx="200" cy="140" rx="40" ry="50" fill="rgba(255,255,255,0.12)"/>
+            <text x="200" y="152" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="serif" font-size="22" font-style="italic">Signature Collection</text>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Signature Collection</span></div>
+        <div class="gal-label"><span>Featured</span><p>Signature Collection 2026</p></div>
+      </div>
+
+      <!-- Regular item -->
+      <div class="gallery-grid__item gal-bg-1" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" role="img" aria-label="Rose Quartz Pendant close-up">
+            <ellipse cx="100" cy="140" rx="48" ry="58" fill="rgba(255,255,255,0.2)"/>
+            <ellipse cx="100" cy="136" rx="32" ry="40" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="100" cy="122" r="12" fill="rgba(255,255,255,0.4)"/>
+            <line x1="100" y1="20" x2="100" y2="82" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Rose Quartz</span></div>
+        <div class="gal-label"><span>Necklaces</span><p>Rose Quartz Pendant</p></div>
+      </div>
+
+      <!-- Tall item -->
+      <div class="gallery-grid_item gallery-grid_item--tall gal-bg-4" data-reveal role="listitem">
+        <div class="gal-svg-inner" style="flex-direction:column;gap:20px">
+          <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg" width="60" height="90" role="img" aria-label="Drop earring">
+            <circle cx="40" cy="15" r="10" fill="rgba(255,255,255,0.3)"/>
+            <polygon points="40,30 24,80 40,100 56,80" fill="rgba(255,255,255,0.2)"/>
+            <polygon points="40,50 32,72 40,84 48,72" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+          <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg" width="60" height="90" role="img" aria-label="Drop earring pair">
+            <circle cx="40" cy="15" r="10" fill="rgba(201,169,110,0.5)"/>
+            <polygon points="40,30 24,80 40,100 56,80" fill="rgba(201,169,110,0.3)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Earrings</span></div>
+        <div class="gal-label"><span>Earrings</span><p>Artisan Drop Pairs</p></div>
+      </div>
+
+      <div class="gallery-grid__item gal-bg-5" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" role="img" aria-label="Gold bangle detail">
+            <circle cx="100" cy="100" r="65" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="12"/>
+            <circle cx="100" cy="100" r="52" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-dasharray="5 4"/>
+            <circle cx="100" cy="35" r="8" fill="rgba(255,255,255,0.5)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Bracelets</span></div>
+        <div class="gal-label"><span>Bracelets</span><p>Gold Bangle Close-up</p></div>
+      </div>
+
+      <div class="gallery-grid__item gal-bg-3" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" role="img" aria-label="Crystal ring detail">
+            <ellipse cx="100" cy="130" rx="65" ry="24" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="10"/>
+            <ellipse cx="100" cy="106" rx="22" ry="10" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="100" cy="96" r="16" fill="rgba(255,255,255,0.25)"/>
+            <circle cx="100" cy="93" r="9" fill="rgba(255,255,255,0.35)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Rings</span></div>
+        <div class="gal-label"><span>Rings</span><p>Moonstone Detail</p></div>
+      </div>
+
+      <!-- Wide item -->
+      <div class="gallery-grid_item gallery-grid_item--wide gal-bg-6" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Studio flatlay banner">
+            <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+            <circle cx="100" cy="100" r="30" fill="rgba(255,255,255,0.12)"/>
+            <polygon points="200,50 270,80 270,120 200,150 130,120 130,80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <circle cx="310" cy="100" r="45" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="8"/>
+            <text x="200" y="107" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="serif" font-size="18" font-style="italic">Studio Flatlay</text>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Behind the Scenes</span></div>
+        <div class="gal-label"><span>Studio</span><p>A Day in the Just-Jewels Studio</p></div>
+      </div>
+
+      <div class="gallery-grid__item gal-bg-7" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" role="img" aria-label="Gift box packaging">
+            <rect x="60" y="80" width="80" height="100" rx="4" fill="rgba(255,255,255,0.15)"/>
+            <rect x="65" y="85" width="70" height="90" rx="3" fill="rgba(255,255,255,0.08)"/>
+            <line x1="100" y1="80" x2="100" y2="50" stroke="rgba(201,169,110,0.7)" stroke-width="2"/>
+            <line x1="70" y1="65" x2="130" y2="65" stroke="rgba(201,169,110,0.7)" stroke-width="2"/>
+            <circle cx="100" cy="48" r="8" fill="rgba(212,132,156,0.8)"/>
+            <circle cx="70" cy="65" r="6" fill="rgba(212,132,156,0.8)"/>
+            <circle cx="130" cy="65" r="6" fill="rgba(212,132,156,0.8)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Gift Sets</span></div>
+        <div class="gal-label"><span>Packaging</span><p>Signature Gift Box</p></div>
+      </div>
+
+      <div class="gallery-grid__item gal-bg-8" data-reveal role="listitem">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" role="img" aria-label="Amethyst cluster">
+            <polygon points="100,60 130,100 125,140 100,160 75,140 70,100" fill="rgba(139,74,107,0.4)"/>
+            <polygon points="100,60 115,95 112,130 100,145 88,130 85,95" fill="rgba(155,107,191,0.5)"/>
+            <polygon points="100,70 110,100 107,128 100,140 93,128 90,100" fill="rgba(180,140,210,0.5)"/>
+            <circle cx="100" cy="80" r="6" fill="rgba(255,255,255,0.5)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay"><span>Gemstones</span></div>
+        <div class="gal-label"><span>Materials</span><p>Raw Amethyst Crystal</p></div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+  </div>
+</section>
+
+<!-- BEHIND THE SCENES -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <p class="eyebrow">Process shots</p>
+      <h2>Behind the Scenes</h2>
+      <hr class="gold-rule" />
+      <p>A glimpse into our studio — where every piece begins as a raw idea and a rough stone.</p>
+    </div>
+    <div class="behind-grid">
+      <div class="behind-item gal-bg-4" data-reveal role="img" aria-label="Artisan hands at work">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" aria-hidden="true">
+            <path d="M20 80 Q40 40 60 60 Q80 80 100 40" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
+            <circle cx="60" cy="60" r="15" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay" style="position:absolute;inset:0;background:rgba(42,32,40,0);display:flex;align-items:center;justify-content:center;transition:var(--transition)">
+          <span style="color:#fff;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:var(--transition)">Wire Forming</span>
+        </div>
+      </div>
+      <div class="behind-item gal-bg-2" data-reveal role="img" aria-label="Stone selection process">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" aria-hidden="true">
+            <polygon points="60,15 90,45 85,80 60,95 35,80 30,45" fill="rgba(255,255,255,0.2)"/>
+            <polygon points="60,25 80,50 76,75 60,85 44,75 40,50" fill="rgba(255,255,255,0.15)"/>
+            <circle cx="60" cy="55" r="12" fill="rgba(255,255,255,0.25)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay" style="position:absolute;inset:0;background:rgba(42,32,40,0);display:flex;align-items:center;justify-content:center;transition:var(--transition)">
+          <span style="color:#fff;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:var(--transition)">Stone Setting</span>
+        </div>
+      </div>
+      <div class="behind-item gal-bg-5" data-reveal role="img" aria-label="Gold annealing process">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" aria-hidden="true">
+            <circle cx="60" cy="60" r="38" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="8"/>
+            <circle cx="60" cy="60" r="24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="4" stroke-dasharray="4 4"/>
+            <circle cx="60" cy="60" r="10" fill="rgba(255,255,255,0.3)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay" style="position:absolute;inset:0;background:rgba(42,32,40,0);display:flex;align-items:center;justify-content:center;transition:var(--transition)">
+          <span style="color:#fff;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:var(--transition)">Metal Work</span>
+        </div>
+      </div>
+      <div class="behind-item gal-bg-7" data-reveal role="img" aria-label="Final polishing step">
+        <div class="gal-svg-inner">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="70%" height="70%" aria-hidden="true">
+            <rect x="35" y="40" width="50" height="60" rx="4" fill="rgba(255,255,255,0.15)"/>
+            <line x1="60" y1="40" x2="60" y2="20" stroke="rgba(201,169,110,0.6)" stroke-width="2"/>
+            <line x1="42" y1="30" x2="78" y2="30" stroke="rgba(201,169,110,0.6)" stroke-width="2"/>
+            <circle cx="60" cy="18" r="5" fill="rgba(212,132,156,0.8)"/>
+          </svg>
+        </div>
+        <div class="gallery-grid__overlay" style="position:absolute;inset:0;background:rgba(42,32,40,0);display:flex;align-items:center;justify-content:center;transition:var(--transition)">
+          <span style="color:#fff;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:var(--transition)">Packaging</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM CTA -->
+<section class="section">
+  <div class="container text-center" data-reveal>
+    <p class="eyebrow">Follow us</p>
+    <h2>@just.jewels</h2>
+    <p style="color:var(--muted);max-width:420px;margin:16px auto 32px;font-size:.95rem">Follow our journey on Instagram for daily behind-the-scenes content, new arrivals, and styling inspiration.</p>
+    <a href="#" class="btn btn-primary"><i class="fab fa-instagram" style="margin-right:8px"></i>Follow on Instagram</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand-name">Just-Jewels</p>
+        <p class="footer__tagline">Handcrafted artisan jewellery made from ethically sourced materials. Each piece is unique — just like you.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Navigate</p>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="collection.html">Collection</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Categories</p>
+        <nav class="footer__links">
+          <a href="collection.html">Necklaces</a>
+          <a href="collection.html">Bracelets</a>
+          <a href="collection.html">Earrings</a>
+          <a href="collection.html">Rings</a>
+          <a href="collection.html">Gift Sets</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Contact</p>
+        <div class="footer__links">
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px"></i>Plot 123, Gaborone, Botswana</span>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i>hello@just-jewels.com</span>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-phone" style="color:var(--gold);margin-right:8px"></i>+267 71 234 567</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Just-Jewels. All rights reserved.</span>
+      <span>Designed &amp; developed for BAC WMD Assignment 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

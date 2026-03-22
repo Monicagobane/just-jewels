@@ -1,35 +1,501 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Contact Us- just-jewels</title> 
-</head> 
-<body> 
-    <header> 
-        <h1>Contact just-jewels</h1> 
-        <nav> 
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="contact.html">Contact</a> 
-        </nav> 
-    </header> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Just-Jewels — submit an enquiry, leave feedback, or request a custom piece." />
+  <title>Contact &amp; Feedback | Just-Jewels</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info-card {
+      background: var(--charcoal);
+      padding: 48px 40px;
+      color: rgba(255,255,255,0.8);
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+    .contact-info-card h3 {
+      font-family: var(--font-display);
+      color: var(--white);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .contact-info-card .eyebrow { margin-bottom: 8px; }
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .contact-detail__icon {
+      width: 42px; height: 42px;
+      background: rgba(201,169,110,0.15);
+      border: 1px solid rgba(201,169,110,0.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+    .contact-detail__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 4px;
+    }
+    .contact-detail__value { font-size: 0.9rem; color: rgba(255,255,255,0.85); }
 
- 
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 20px;
+      margin-top: 8px;
+    }
+    .hours-grid span { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .hours-grid strong { font-size: 0.82rem; color: rgba(255,255,255,0.8); font-weight: 400; }
 
-    <main> 
+    .social-row { display: flex; gap: 10px; margin-top: 32px; }
+    .social-row a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+    .social-row a:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
 
-        <p>We would love to hear from you!</p> 
-        <p>Email us at: <a href="mailto:gobanemonica10@gmail.com">gobanemonica10@gmail.com</a></p>
-        <p>Location: Gaborone, Botswana</p>
-        <p>Working hours: Monday-Friday 8am-5pm</p>
+    .form-card {
+      background: var(--white);
+      padding: 52px 48px;
+    }
+    .form-card h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    .form-card .subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 40px;
+    }
 
-    </main> 
+    /* Radio tab styles */
+    .enquiry-tabs { display: flex; gap: 0; margin-bottom: 32px; flex-wrap: wrap; }
+    .enquiry-tab {
+      flex: 1;
+      padding: 12px 8px;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1.5px solid rgba(139,74,107,0.2);
+      border-right: none;
+      cursor: pointer;
+      transition: var(--transition);
+      background: transparent;
+      font-family: var(--font-body);
+      color: var(--muted);
+      min-width: 80px;
+    }
+    .enquiry-tab:last-child { border-right: 1.5px solid rgba(139,74,107,0.2); }
+    .enquiry-tab.active,
+    .enquiry-tab:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
 
- 
+    .map-placeholder {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(135deg, var(--blush), var(--cream));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      border: 1px solid rgba(139,74,107,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0 L30 15 L15 30 L0 15Z' fill='none' stroke='%238B4A6B' stroke-opacity='0.06' stroke-width='0.5'/%3E%3C/svg%3E");
+    }
+    .map-placeholder__inner { text-align: center; position: relative; z-index: 1; }
+    .map-placeholder__pin { font-size: 2rem; margin-bottom: 8px; }
+    .map-placeholder p { font-size: 0.8rem; color: var(--muted); }
+    .map-placeholder strong { display: block; font-family: var(--font-display); font-size: 1rem; color: var(--charcoal); margin-bottom: 4px; }
 
-    <footer> 
-        <p>&copy; 2026 Monica Gobane</p> 
-    </footer> 
-</body> 
+    @media (max-width: 992px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-info-card { position: static; }
+      .form-card { padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" style="color:var(--rose-dark)">Just-Jewels</a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="navbar__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="collection.html">Collection</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:var(--nav-h)">
+  <div class="container">
+    <div class="page-hero__content anim-fade-up">
+      <p class="eyebrow">Get in touch</p>
+      <h1>Contact &amp; Feedback</h1>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT LAYOUT -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: Info card -->
+      <div>
+        <div class="contact-info-card" data-reveal>
+          <p class="eyebrow" style="color:rgba(201,169,110,0.8)">Find us</p>
+          <h3>Just-Jewels Studio</h3>
+          <p style="font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:36px;line-height:1.7">We'd love to hear from you — whether it's a custom order, a question about our collection, or just to say hello.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail__icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <p class="contact-detail__label">Location</p>
+              <p class="contact-detail__value">Plot 123, Main Mall Area<br />Gaborone, Botswana</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail__icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <p class="contact-detail__label">Email</p>
+              <p class="contact-detail__value">hello@just-jewels.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail__icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <p class="contact-detail__label">Phone / WhatsApp</p>
+              <p class="contact-detail__value">+267 71 234 567</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail__icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <p class="contact-detail__label">Studio Hours</p>
+              <div class="hours-grid">
+                <span>Mon – Fri</span><strong>9:00 AM – 5:00 PM</strong>
+                <span>Saturday</span><strong>10:00 AM – 2:00 PM</strong>
+                <span>Sunday</span><strong>Closed</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Map placeholder -->
+        <div class="map-placeholder mt-3" role="img" aria-label="Studio location map placeholder">
+          <div class="map-placeholder__inner">
+            <div class="map-placeholder__pin">📍</div>
+            <strong>Just-Jewels Studio</strong>
+            <p>Plot 123, Main Mall Area, Gaborone</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="form-card" data-reveal>
+        <h2>Send us a message</h2>
+        <p class="subtitle">Fill in the form below and we'll get back to you within 24 hours.</p>
+
+        <!-- Enquiry type tabs -->
+        <div class="enquiry-tabs" role="group" aria-label="Enquiry type">
+          <button class="enquiry-tab active" onclick="setTab(this,'General Enquiry')">General</button>
+          <button class="enquiry-tab" onclick="setTab(this,'Custom Order')">Custom Order</button>
+          <button class="enquiry-tab" onclick="setTab(this,'Product Feedback')">Feedback</button>
+          <button class="enquiry-tab" onclick="setTab(this,'Stockist Enquiry')">Stockist</button>
+        </div>
+
+        <!-- FORM — HTML5 validated -->
+        <form id="feedbackForm" novalidate>
+          <input type="hidden" id="enquiryType" name="enquiry_type" value="General Enquiry" />
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="firstName" class="form-label">First Name <span style="color:var(--rose)">*</span></label>
+              <input type="text" id="firstName" name="first_name" class="form-control"
+                     placeholder="e.g. Kefilwe"
+                     required minlength="2" maxlength="50"
+                     pattern="[A-Za-z\s\-]+"
+                     title="Please enter a valid first name (letters only)" />
+            </div>
+            <div class="form-group">
+              <label for="lastName" class="form-label">Last Name <span style="color:var(--rose)">*</span></label>
+              <input type="text" id="lastName" name="last_name" class="form-control"
+                     placeholder="e.g. Modise"
+                     required minlength="2" maxlength="50"
+                     pattern="[A-Za-z\s\-]+"
+                     title="Please enter a valid last name (letters only)" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address <span style="color:var(--rose)">*</span></label>
+            <input type="email" id="email" name="email" class="form-control"
+                   placeholder="e.g. kefilwe@email.com"
+                   required
+                   title="Please enter a valid email address" />
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="tel" id="phone" name="phone" class="form-control"
+                     placeholder="+267 71 234 567"
+                     pattern="[\+\d\s\-\(\)]+"
+                     title="Please enter a valid phone number" />
+            </div>
+            <div class="form-group">
+              <label for="product" class="form-label">Product Interest</label>
+              <select id="product" name="product_interest" class="form-control form-select">
+                <option value="" disabled selected>Select a category</option>
+                <option value="necklaces">Necklaces</option>
+                <option value="bracelets">Bracelets</option>
+                <option value="earrings">Earrings</option>
+                <option value="rings">Rings</option>
+                <option value="gift-sets">Gift Sets</option>
+                <option value="custom">Custom Order</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject <span style="color:var(--rose)">*</span></label>
+            <input type="text" id="subject" name="subject" class="form-control"
+                   placeholder="What is your message about?"
+                   required minlength="4" maxlength="120"
+                   title="Please enter a subject (at least 4 characters)" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Overall Rating</label>
+            <div class="star-rating" role="group" aria-label="Rate your experience">
+              <input type="hidden" id="ratingVal" name="rating" value="" />
+              <label title="1 star">★</label>
+              <label title="2 stars">★</label>
+              <label title="3 stars">★</label>
+              <label title="4 stars">★</label>
+              <label title="5 stars">★</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Message <span style="color:var(--rose)">*</span></label>
+            <textarea id="message" name="message" class="form-control"
+                      placeholder="Tell us about your enquiry, custom idea, or share your feedback..."
+                      required minlength="10" maxlength="1000"
+                      title="Please enter your message (at least 10 characters)"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:.85rem;color:var(--muted);line-height:1.6">
+              <input type="checkbox" id="consent" name="consent" required
+                     style="margin-top:3px;accent-color:var(--rose);width:16px;height:16px;flex-shrink:0"
+                     title="You must agree to the privacy policy" />
+              I agree that Just-Jewels may use my details to respond to this enquiry. I have read and accept the <a href="#" style="color:var(--rose)">privacy policy</a>. <span style="color:var(--rose)">*</span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label style="display:flex;align-items:center;gap:12px;cursor:pointer;font-size:.85rem;color:var(--muted)">
+              <input type="checkbox" name="newsletter" style="accent-color:var(--rose);width:16px;height:16px" />
+              Subscribe to our newsletter for new collections and exclusive offers
+            </label>
+          </div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">
+              <i class="fas fa-paper-plane" style="margin-right:10px"></i>Send Message
+            </button>
+          </div>
+
+          <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:16px">
+            Fields marked <span style="color:var(--rose)">*</span> are required. We respond within 24 business hours.
+          </p>
+        </form>
+
+        <!-- Success message -->
+        <div class="form-success" id="formSuccess" role="alert">
+          <strong><i class="fas fa-check-circle" style="margin-right:8px;color:#6BBF8A"></i>Thank you for reaching out!</strong>
+          <p style="margin-top:8px;font-size:.88rem">Your message has been received. A member of the Just-Jewels team will be in touch within 24 hours.</p>
+        </div>
+      </div>
+
+    </div><!-- /contact-layout -->
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <p class="eyebrow">Quick answers</p>
+      <h2>Frequently Asked Questions</h2>
+      <hr class="gold-rule" />
+    </div>
+    <div style="max-width:740px;margin:0 auto" data-reveal>
+      <div class="accordion" id="faqAccordion">
+
+        <div class="accordion-item" style="border:1.5px solid rgba(139,74,107,0.15);border-radius:0;margin-bottom:8px">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" style="font-family:var(--font-display);font-size:1.05rem;background:var(--cream);color:var(--charcoal)">
+              How do I place a custom order?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body" style="font-size:.9rem;color:var(--muted);line-height:1.75">
+              Simply fill in the contact form above, select "Custom Order" as the enquiry type, and describe your vision in the message field. We'll get back to you within 24 hours to discuss materials, design, and pricing.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" style="border:1.5px solid rgba(139,74,107,0.15);border-radius:0;margin-bottom:8px">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" style="font-family:var(--font-display);font-size:1.05rem;background:var(--cream);color:var(--charcoal)">
+              How long does a custom piece take to make?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body" style="font-size:.9rem;color:var(--muted);line-height:1.75">
+              Custom pieces typically take 7–14 business days depending on complexity. We'll provide a specific timeline once we've discussed your design brief.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" style="border:1.5px solid rgba(139,74,107,0.15);border-radius:0;margin-bottom:8px">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" style="font-family:var(--font-display);font-size:1.05rem;background:var(--cream);color:var(--charcoal)">
+              Do you ship outside of Botswana?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body" style="font-size:.9rem;color:var(--muted);line-height:1.75">
+              Currently we ship within Botswana and to select SADC countries. International shipping is handled through reliable courier partners. Please enquire for a shipping quote.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item" style="border:1.5px solid rgba(139,74,107,0.15);border-radius:0">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" style="font-family:var(--font-display);font-size:1.05rem;background:var(--cream);color:var(--charcoal)">
+              How do I care for my jewellery?
+            </button>
+          </h2>
+          <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body" style="font-size:.9rem;color:var(--muted);line-height:1.75">
+              Store pieces individually in the provided box to prevent scratching. Avoid contact with water, perfume, and lotions. Clean gently with a soft cloth. Natural stones benefit from occasional charging in sunlight or moonlight.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand-name">Just-Jewels</p>
+        <p class="footer__tagline">Handcrafted artisan jewellery made from ethically sourced materials. Each piece is unique — just like you.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Navigate</p>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="collection.html">Collection</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Categories</p>
+        <nav class="footer__links">
+          <a href="collection.html">Necklaces</a>
+          <a href="collection.html">Bracelets</a>
+          <a href="collection.html">Earrings</a>
+          <a href="collection.html">Rings</a>
+          <a href="collection.html">Gift Sets</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Contact</p>
+        <div class="footer__links">
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px"></i>Plot 123, Gaborone, Botswana</span>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i>hello@just-jewels.com</span>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-phone" style="color:var(--gold);margin-right:8px"></i>+267 71 234 567</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Just-Jewels. All rights reserved.</span>
+      <span>Designed &amp; developed for BAC WMD Assignment 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function setTab(btn, type) {
+    document.querySelectorAll('.enquiry-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('enquiryType').value = type;
+  }
+</script>
+</body>
 </html>

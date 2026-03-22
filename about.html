@@ -1,35 +1,316 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>About Us- just-jewels</title> 
-</head> 
-<body> 
-    <header> 
-        <h1>About just-jewels</h1> 
-        <nav> 
-            <a href="index.html">Home</a> | 
-            <a href="about.html">About</a> | 
-            <a href="contact.html">Contact</a> 
-        </nav> 
-    </header> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Just-Jewels — Our story, craft, values and the artisans behind every handmade piece." />
+  <title>About Us | Just-Jewels</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .stat-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--charcoal);
+    }
+    .stat-item {
+      padding: 44px 32px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item__num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stat-item__label {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(139,74,107,0.15);
+    }
+    .process-step {
+      background: var(--cream);
+      padding: 44px 32px;
+      position: relative;
+    }
+    .process-step__num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--blush);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .process-step__icon { font-size: 1.5rem; color: var(--rose); margin-bottom: 16px; }
+    .process-step__title { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 10px; }
+    .process-step__text { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 768px) {
+      .stat-bar { grid-template-columns: 1fr 1fr; }
+      .stat-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .stat-bar { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
 
- 
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" style="color:var(--rose-dark)">Just-Jewels</a>
+    <ul class="navbar__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<nav class="navbar__mobile" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="collection.html">Collection</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-    <main> 
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:var(--nav-h)">
+  <div class="container">
+    <div class="page-hero__content anim-fade-up">
+      <p class="eyebrow">Our story</p>
+      <h1>Crafted by hand.<br />Worn with pride.</h1>
+    </div>
+  </div>
+</div>
 
-        <p>Welcome to just-jewels where beauty meets craftsmanship.</p> 
-        <p>We are a small brand based in Botswana, passionate about creating what's best for people</p> 
-        <p>Every ring, necklace, earrings and bracelet we sell is made with love because we believe every person deserves to shine.</p>
-        <p>All our jewellery comes with a warranty and a free gift wrapping.</p>
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item"><span class="stat-item_num">6+</span><p class="stat-item_label">Years of craft</p></div>
+  <div class="stat-item"><span class="stat-item_num">1200+</span><p class="stat-item_label">Pieces created</p></div>
+  <div class="stat-item"><span class="stat-item_num">14</span><p class="stat-item_label">Artisan materials</p></div>
+  <div class="stat-item"><span class="stat-item_num">100%</span><p class="stat-item_label">Ethically sourced</p></div>
+</div>
 
-    </main> 
+<!-- ABOUT SPLIT — Brand Story -->
+<section class="section">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-split__img" data-reveal>
+        <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" aria-label="Artisan at work" style="width:100%;height:100%;object-fit:cover;" role="img">
+          <defs>
+            <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8B4A6B" stop-opacity=".4"/>
+              <stop offset="100%" stop-color="#C9A96E" stop-opacity=".3"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="380" fill="url(#bg1)"/>
+          <circle cx="150" cy="160" r="80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+          <circle cx="150" cy="160" r="55" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <polygon points="150,90 210,130 210,190 150,230 90,190 90,130" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+          <circle cx="150" cy="160" r="18" fill="rgba(201,169,110,0.5)"/>
+          <text x="150" y="310" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="serif" font-size="13" font-style="italic">Just-Jewels Studio</text>
+        </svg>
+      </div>
+      <div data-reveal>
+        <p class="eyebrow">How it began</p>
+        <h2>A studio born from a love of stones</h2>
+        <hr class="gold-rule mt-2" style="margin-bottom:24px" />
+        <p style="color:var(--muted);line-height:1.9;margin-bottom:16px">Just-Jewels was founded in 2020 by Lesedi Dlamini in her small apartment studio in Gaborone. What began as a hobby — wrapping raw crystals in copper wire — quickly became a movement.</p>
+        <p style="color:var(--muted);line-height:1.9;margin-bottom:32px">Word of her handcrafted pieces spread through markets and social media, and today Just-Jewels is a beloved independent brand known for its commitment to ethical sourcing, sustainable packaging, and deeply personal designs.</p>
+        <a href="collection.html" class="btn btn-primary">Explore the Collection</a>
+      </div>
+    </div>
+  </div>
+</section>
 
- 
+<!-- VALUES -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <p class="eyebrow">What we stand for</p>
+      <h2>Our Values</h2>
+      <hr class="gold-rule" />
+    </div>
+    <div class="about-values" style="grid-template-columns:repeat(2,1fr);max-width:800px;margin:0 auto">
+      <div class="value-card" data-reveal>
+        <div class="value-card__icon">💎</div>
+        <p class="value-card__title">Ethical Sourcing</p>
+        <p class="value-card__text">Every gemstone and metal we use is responsibly sourced from verified suppliers who share our commitment to environmental and human dignity.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-card__icon">🤲</div>
+        <p class="value-card__title">Handcrafted Always</p>
+        <p class="value-card__text">We never use mass-production techniques. Each piece is hand-formed, shaped, and finished by our small team of passionate artisans.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-card__icon">🌿</div>
+        <p class="value-card__title">Eco Commitment</p>
+        <p class="value-card__text">Our packaging is 100% recyclable and our studio runs on solar energy. We strive to leave the smallest possible footprint on the earth we draw from.</p>
+      </div>
+      <div class="value-card" data-reveal>
+        <div class="value-card__icon">✨</div>
+        <p class="value-card__title">Unique by Design</p>
+        <p class="value-card__text">No two natural stones are identical. We embrace this — every piece has subtle variations that make it truly one-of-a-kind, just like its owner.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer> 
-        <p>&copy; 2026 Monica Gobane</p> 
-    </footer> 
-</body> 
-</html> 
+<!-- CRAFT PROCESS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <p class="eyebrow">Behind every piece</p>
+      <h2>Our Craft Process</h2>
+      <hr class="gold-rule" />
+    </div>
+  </div>
+  <div class="process-grid">
+    <div class="process-step" data-reveal>
+      <p class="process-step__num">01</p>
+      <p class="process-step__icon"><i class="fas fa-search"></i></p>
+      <p class="process-step__title">Sourcing</p>
+      <p class="process-step__text">We personally visit suppliers and markets to select only the finest natural stones — choosing each one for its unique colour, texture, and energy.</p>
+    </div>
+    <div class="process-step" data-reveal>
+      <p class="process-step__num">02</p>
+      <p class="process-step__icon"><i class="fas fa-pencil-ruler"></i></p>
+      <p class="process-step__title">Designing</p>
+      <p class="process-step__text">Each piece begins as a sketch. We consider how the stone's natural shape can guide the design rather than be constrained by it.</p>
+    </div>
+    <div class="process-step" data-reveal>
+      <p class="process-step__num">03</p>
+      <p class="process-step__icon"><i class="fas fa-hammer"></i></p>
+      <p class="process-step__title">Crafting</p>
+      <p class="process-step__text">Using hand tools, wire, and flame, our artisans form each piece. The metal is annealed, shaped, textured, and polished — all by hand.</p>
+    </div>
+    <div class="process-step" data-reveal>
+      <p class="process-step__num">04</p>
+      <p class="process-step__icon"><i class="fas fa-box-open"></i></p>
+      <p class="process-step__title">Packaging</p>
+      <p class="process-step__text">Every piece is presented in our signature eco-boxes, wrapped in recycled tissue and sealed with a wax stamp — ready to become a treasured gift.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-header section-header--center" data-reveal>
+      <p class="eyebrow">The people behind the pieces</p>
+      <h2>Meet the Artisans</h2>
+      <hr class="gold-rule" />
+    </div>
+    <div class="team-grid">
+      <div class="team-card" data-reveal>
+        <div class="team-card__img">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" aria-label="Lesedi Dlamini portrait" role="img">
+            <circle cx="60" cy="60" r="60" fill="#E8D0DC"/>
+            <circle cx="60" cy="48" r="20" fill="#C9A0B8"/>
+            <ellipse cx="60" cy="100" rx="32" ry="28" fill="#C9A0B8"/>
+          </svg>
+        </div>
+        <h3 class="team-card__name">Lesedi Dlamini</h3>
+        <p class="team-card__role">Founder &amp; Lead Artisan</p>
+      </div>
+      <div class="team-card" data-reveal>
+        <div class="team-card__img">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" aria-label="Tebogo Moyo portrait" role="img">
+            <circle cx="60" cy="60" r="60" fill="#D9E8DA"/>
+            <circle cx="60" cy="48" r="20" fill="#A0C9A8"/>
+            <ellipse cx="60" cy="100" rx="32" ry="28" fill="#A0C9A8"/>
+          </svg>
+        </div>
+        <h3 class="team-card__name">Tebogo Moyo</h3>
+        <p class="team-card__role">Silversmith</p>
+      </div>
+      <div class="team-card" data-reveal>
+        <div class="team-card__img">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" aria-label="Amara Sithole portrait" role="img">
+            <circle cx="60" cy="60" r="60" fill="#DDD0E8"/>
+            <circle cx="60" cy="48" r="20" fill="#B0A0C9"/>
+            <ellipse cx="60" cy="100" rx="32" ry="28" fill="#B0A0C9"/>
+          </svg>
+        </div>
+        <h3 class="team-card__name">Amara Sithole</h3>
+        <p class="team-card__role">Gemstone Specialist</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <p class="footer__brand-name">Just-Jewels</p>
+        <p class="footer__tagline">Handcrafted artisan jewellery made from ethically sourced materials. Each piece is unique — just like you.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__col-title">Navigate</p>
+        <nav class="footer__links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="collection.html">Collection</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Categories</p>
+        <nav class="footer__links">
+          <a href="collection.html">Necklaces</a>
+          <a href="collection.html">Bracelets</a>
+          <a href="collection.html">Earrings</a>
+          <a href="collection.html">Rings</a>
+          <a href="collection.html">Gift Sets</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer__col-title">Contact</p>
+        <div class="footer__links">
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px"></i>Plot 123, Gaborone, Botswana</span>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i>hello@just-jewels.com</span>
+          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-phone" style="color:var(--gold);margin-right:8px"></i>+267 71 234 567</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Just-Jewels. All rights reserved.</span>
+      <span>Designed &amp; developed for BAC WMD Assignment 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
