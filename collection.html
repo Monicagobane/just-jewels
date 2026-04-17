@@ -1,95 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Browse the Just-Jewels collection — handcrafted necklaces, bracelets, earrings, and rings." />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Just-Jewels Collection — browse necklaces, bracelets, earrings, rings and gift sets."/>
   <title>Collection | Just-Jewels</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    .filter-bar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
-    }
-    .filter-btn {
-      padding: 9px 22px;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      border: 1.5px solid rgba(139,74,107,0.25);
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      transition: var(--transition);
-      font-family: var(--font-body);
-    }
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--rose);
-      border-color: var(--rose);
-      color: #fff;
-    }
-    .product-count {
-      margin-left: auto;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-    .badge-sale {
-      position: absolute;
-      top: 16px; right: 16px;
-      background: var(--gold);
-      color: #fff;
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      z-index: 2;
-    }
-    .card__wishlist {
-      position: absolute;
-      top: 16px; right: 16px;
-      width: 34px; height: 34px;
-      background: rgba(255,255,255,0.9);
-      border: none;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted);
-      z-index: 3;
-      transition: var(--transition);
-      font-size: 0.85rem;
-    }
-    .card__wishlist:hover { background: var(--rose); color: #fff; }
-    .card__cta {
-      display: block;
-      text-align: center;
-      margin-top: 16px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--rose);
-      padding: 10px;
-      border-top: 1px solid var(--blush);
-      transition: var(--transition);
-    }
-    .card__cta:hover { background: var(--rose); color: #fff; }
-    .card[data-category] { transition: opacity 0.3s, transform 0.3s; }
-    .card[data-category].hidden { display: none; }
-  </style>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar scrolled" id="navbar">
+<nav class="navbar" id="navbar">
   <div class="navbar__inner">
-    <a href="index.html" class="navbar__logo" style="color:var(--rose-dark)">Just-Jewels</a>
+    <a href="index.html" class="navbar__logo">Just-Jewels</a>
     <ul class="navbar__links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -97,7 +22,9 @@
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <button class="navbar__toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 <nav class="navbar__mobile" id="mobileMenu">
@@ -108,370 +35,161 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- PAGE HERO -->
-<div class="page-hero" style="margin-top:var(--nav-h)">
-  <div class="container">
-    <div class="page-hero__content anim-fade-up">
-      <p class="eyebrow">Handcrafted pieces</p>
-      <h1>The Collection</h1>
-    </div>
+<!-- HERO BANNER -->
+<div class="page-top">
+  <div class="hero-banner" style="text-align:center">
+    <h2>The Collection</h2>
   </div>
 </div>
 
-<!-- COLLECTION -->
+<!-- FILTER BAR -->
+<div class="filter-bar" role="group" aria-label="Filter by category">
+  <button class="filter-btn active" data-filter="all">ALL</button>
+  <button class="filter-btn" data-filter="necklaces">Necklaces</button>
+  <button class="filter-btn" data-filter="bracelets">Bracelets</button>
+  <button class="filter-btn" data-filter="earrings">Earrings</button>
+  <button class="filter-btn" data-filter="rings">Rings</button>
+  <button class="filter-btn" data-filter="gifts">Gift Sets</button>
+</div>
+
+<!-- PRODUCT GRID -->
 <section class="section">
-  <div class="container">
-    <!-- Filter bar -->
-    <div class="filter-bar" role="group" aria-label="Filter products by category">
-      <button class="filter-btn active" data-filter="all" onclick="filterProducts(this,'all')">All</button>
-      <button class="filter-btn" data-filter="necklaces" onclick="filterProducts(this,'necklaces')">Necklaces</button>
-      <button class="filter-btn" data-filter="bracelets" onclick="filterProducts(this,'bracelets')">Bracelets</button>
-      <button class="filter-btn" data-filter="earrings" onclick="filterProducts(this,'earrings')">Earrings</button>
-      <button class="filter-btn" data-filter="rings" onclick="filterProducts(this,'rings')">Rings</button>
-      <button class="filter-btn" data-filter="gifts" onclick="filterProducts(this,'gifts')">Gift Sets</button>
-      <span class="product-count" id="productCount">12 pieces</span>
+  <div class="product-grid" id="productGrid">
+
+    <!-- Necklaces -->
+    <div class="product-card" data-cat="necklaces">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&q=80"
+           alt="Necklace Quartz pendant" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Necklaces</p>
+        <p class="product-card__name">Necklace Quartz</p>
+        <p class="product-card__price">P420</p>
+      </div>
     </div>
 
-    <!-- Products Grid -->
-    <div class="product-grid" id="productGrid">
-
-      <!-- NECKLACES -->
-      <div class="card" data-category="necklaces" data-reveal>
-        <button class="card__wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Rose Quartz Pendant">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <line x1="100" y1="20" x2="100" y2="100" stroke="#C9A96E" stroke-width="2"/>
-            <circle cx="100" cy="18" r="5" fill="#C9A96E"/>
-            <ellipse cx="100" cy="140" rx="36" ry="44" fill="#D4849C" opacity=".75"/>
-            <ellipse cx="100" cy="136" rx="24" ry="30" fill="#E8A0B4" opacity=".8"/>
-            <circle cx="100" cy="125" r="8" fill="rgba(255,255,255,0.5)"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Necklaces</p>
-          <h3 class="card__title">Rose Quartz Pendant</h3>
-          <p class="card__price"><strong>P 420</strong> &nbsp; sterling silver chain</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Bracelets -->
+    <div class="product-card" data-cat="bracelets">
+      <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=600&q=80"
+           alt="Bracelet" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Bracelets</p>
+        <p class="product-card__name">Bracelet</p>
+        <p class="product-card__price">P305</p>
       </div>
+    </div>
 
-      <div class="card" data-category="necklaces" data-reveal>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Labradorite Teardrop Necklace">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <path d="M100 20 Q120 60 130 90 Q140 120 100 160 Q60 120 70 90 Q80 60 100 20Z" fill="#6B7A9B" opacity=".6"/>
-            <path d="M100 35 Q112 65 118 88 Q126 112 100 145 Q74 112 82 88 Q88 65 100 35Z" fill="#8B9BBF" opacity=".7"/>
-            <line x1="100" y1="18" x2="100" y2="10" stroke="#C9A96E" stroke-width="2"/>
-            <circle cx="100" cy="8" r="4" fill="#C9A96E"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Necklaces</p>
-          <h3 class="card__title">Labradorite Teardrop</h3>
-          <p class="card__price"><strong>P 560</strong> &nbsp; 18K gold-filled</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Gift Sets -->
+    <div class="product-card" data-cat="gifts">
+      <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=600&q=80"
+           alt="Gift Set jewellery" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Gift Sets</p>
+        <p class="product-card__name">Gift Set</p>
+        <p class="product-card__price">P450</p>
       </div>
+    </div>
 
-      <div class="card" data-category="necklaces" data-reveal>
-        <button class="card__wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-        <span class="badge-sale">Sale</span>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Citrine Sun Pendant">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <circle cx="100" cy="140" r="42" fill="#E8C060" opacity=".7"/>
-            <circle cx="100" cy="140" r="28" fill="#F0D080" opacity=".8"/>
-            <line x1="100" y1="95" x2="100" y2="20" stroke="#C9A96E" stroke-width="2"/>
-            <circle cx="100" cy="18" r="5" fill="#C9A96E"/>
-            <!-- sun rays -->
-            <g stroke="#E8C060" stroke-width="1.5" opacity=".5">
-              <line x1="58" y1="110" x2="42" y2="97"/>
-              <line x1="54" y1="140" x2="36" y2="140"/>
-              <line x1="58" y1="170" x2="42" y2="183"/>
-              <line x1="142" y1="110" x2="158" y2="97"/>
-              <line x1="146" y1="140" x2="164" y2="140"/>
-              <line x1="142" y1="170" x2="158" y2="183"/>
-            </g>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Necklaces</p>
-          <h3 class="card__title">Citrine Sun Pendant</h3>
-          <p class="card__price"><strong>P 390</strong> <span style="text-decoration:line-through;color:#BBB;font-size:.82rem"> P 490</span></p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Rings -->
+    <div class="product-card" data-cat="rings">
+      <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80"
+           alt="Rings collection" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Rings</p>
+        <p class="product-card__name">Rings</p>
+        <p class="product-card__price">P530</p>
       </div>
+    </div>
 
-      <!-- BRACELETS -->
-      <div class="card" data-category="bracelets" data-reveal>
-        <button class="card__wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Gold Bangle Set">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <circle cx="100" cy="130" r="58" fill="none" stroke="#C9A96E" stroke-width="7"/>
-            <circle cx="100" cy="130" r="48" fill="none" stroke="#C9A96E" stroke-width="3" stroke-dasharray="5 4"/>
-            <circle cx="100" cy="130" r="38" fill="none" stroke="#E8D090" stroke-width="5"/>
-            <circle cx="100" cy="72" r="6" fill="#C9A96E"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Bracelets</p>
-          <h3 class="card__title">Gold Bangle Set (×3)</h3>
-          <p class="card__price"><strong>P 310</strong> &nbsp; 18K gold-filled</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Bracelets 2 -->
+    <div class="product-card" data-cat="bracelets">
+      <img src="https://images.unsplash.com/photo-1573408301185-9519f94815b2?w=600&q=80"
+           alt="Bracelets gold bangle set" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Bracelets</p>
+        <p class="product-card__name">Bracelets</p>
+        <p class="product-card__price">P310</p>
       </div>
+    </div>
 
-      <div class="card" data-category="bracelets" data-reveal>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Beaded Crystal Bracelet">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <circle cx="100" cy="130" r="52" fill="none" stroke="#DDD" stroke-width="2"/>
-            <g fill="#D4849C">
-              <circle cx="100" cy="78" r="7"/>
-              <circle cx="135" cy="88" r="7"/>
-              <circle cx="152" cy="118" r="7"/>
-              <circle cx="148" cy="152" r="7"/>
-              <circle cx="128" cy="175" r="7"/>
-              <circle cx="100" cy="182" r="7"/>
-              <circle cx="72" cy="175" r="7"/>
-              <circle cx="52" cy="152" r="7"/>
-              <circle cx="48" cy="118" r="7"/>
-              <circle cx="65" cy="88" r="7"/>
-            </g>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Bracelets</p>
-          <h3 class="card__title">Beaded Crystal Bracelet</h3>
-          <p class="card__price"><strong>P 195</strong> &nbsp; rose quartz beads</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Earrings -->
+    <div class="product-card" data-cat="earrings">
+      <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80"
+           alt="Amethyst Drop earrings" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Earrings</p>
+        <p class="product-card__name">Amethyst Drop Earrings</p>
+        <p class="product-card__price">P280</p>
       </div>
+    </div>
 
-      <!-- EARRINGS -->
-      <div class="card" data-category="earrings" data-reveal>
-        <button class="card__wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Amethyst Drop Earrings">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <circle cx="70" cy="40" r="8" fill="#5C2B44"/>
-            <circle cx="130" cy="40" r="8" fill="#5C2B44"/>
-            <polygon points="70,56 56,110 70,128 84,110" fill="#9B6BBF" opacity=".8"/>
-            <polygon points="130,56 116,110 130,128 144,110" fill="#9B6BBF" opacity=".8"/>
-            <polygon points="70,90 62,110 70,120 78,110" fill="rgba(255,255,255,0.3)"/>
-            <polygon points="130,90 122,110 130,120 138,110" fill="rgba(255,255,255,0.3)"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Earrings</p>
-          <h3 class="card__title">Amethyst Drop Earrings</h3>
-          <p class="card__price"><strong>P 280</strong> &nbsp; sterling silver hooks</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Necklaces 2 -->
+    <div class="product-card" data-cat="necklaces">
+      <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&q=80"
+           alt="Gold necklace" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Necklaces</p>
+        <p class="product-card__name">Gold Pendant Necklace</p>
+        <p class="product-card__price">P490</p>
       </div>
+    </div>
 
-      <div class="card" data-category="earrings" data-reveal>
-        <button class="card__wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Gold Hoop Earrings">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <circle cx="70" cy="120" r="42" fill="none" stroke="#C9A96E" stroke-width="7"/>
-            <circle cx="130" cy="120" r="42" fill="none" stroke="#C9A96E" stroke-width="7"/>
-            <line x1="70" y1="38" x2="70" y2="78" stroke="#C9A96E" stroke-width="3"/>
-            <line x1="130" y1="38" x2="130" y2="78" stroke="#C9A96E" stroke-width="3"/>
-            <circle cx="70" cy="36" r="5" fill="#C9A96E"/>
-            <circle cx="130" cy="36" r="5" fill="#C9A96E"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Earrings</p>
-          <h3 class="card__title">Classic Gold Hoops</h3>
-          <p class="card__price"><strong>P 245</strong> &nbsp; 18K gold-filled</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Rings 2 -->
+    <div class="product-card" data-cat="rings">
+      <img src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=600&q=80"
+           alt="Silver ring" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Rings</p>
+        <p class="product-card__name">Silver Moonstone Ring</p>
+        <p class="product-card__price">P185</p>
       </div>
+    </div>
 
-      <!-- RINGS -->
-      <div class="card" data-category="rings" data-reveal>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Moonstone Stacking Ring">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <ellipse cx="100" cy="150" rx="55" ry="20" fill="none" stroke="#C9A96E" stroke-width="12"/>
-            <ellipse cx="100" cy="118" rx="55" ry="20" fill="none" stroke="#E0E8F0" stroke-width="10"/>
-            <ellipse cx="100" cy="118" rx="55" ry="20" fill="none" stroke="#C0CCD8" stroke-width="2"/>
-            <circle cx="100" cy="98" r="14" fill="#D8E4F0" opacity=".9"/>
-            <circle cx="100" cy="96" r="8" fill="rgba(255,255,255,0.5)"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Rings</p>
-          <h3 class="card__title">Moonstone Stacking Ring</h3>
-          <p class="card__price"><strong>P 185</strong> &nbsp; adjustable silver band</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
+    <!-- Gifts 2 -->
+    <div class="product-card" data-cat="gifts">
+      <img src="https://images.unsplash.com/photo-1619119069152-a2b331eb392a?w=600&q=80"
+           alt="Jewellery gift set" class="product-card__img" width="600" height="450"/>
+      <div class="product-card__body">
+        <p class="product-card__category">Gift Sets</p>
+        <p class="product-card__name">Rose Garden Gift Set</p>
+        <p class="product-card__price">P680</p>
       </div>
+    </div>
 
-      <!-- GIFT SETS -->
-      <div class="card" data-category="gifts" data-reveal>
-        <button class="card__wishlist" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Rose Garden Gift Set">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <rect x="50" y="100" width="100" height="120" rx="4" fill="#5C2B44" opacity=".8"/>
-            <rect x="55" y="105" width="90" height="110" rx="3" fill="#8B4A6B" opacity=".5"/>
-            <line x1="100" y1="100" x2="100" y2="60" stroke="#C9A96E" stroke-width="2"/>
-            <line x1="70" y1="80" x2="130" y2="80" stroke="#C9A96E" stroke-width="2"/>
-            <circle cx="100" cy="58" r="10" fill="#D4849C"/>
-            <circle cx="70" cy="80" r="8" fill="#D4849C"/>
-            <circle cx="130" cy="80" r="8" fill="#D4849C"/>
-            <text x="100" y="168" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="serif" font-size="10" font-style="italic">Gift Set</text>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Gift Sets</p>
-          <h3 class="card__title">Rose Garden Gift Set</h3>
-          <p class="card__price"><strong>P 680</strong> &nbsp; pendant + earrings + bracelet</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
-      </div>
-
-      <div class="card" data-category="rings" data-reveal>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Copper Twist Ring">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <ellipse cx="100" cy="140" rx="55" ry="22" fill="none" stroke="#B87333" stroke-width="10"/>
-            <ellipse cx="100" cy="140" rx="55" ry="22" fill="none" stroke="#D4893C" stroke-width="4" stroke-dasharray="6 4"/>
-            <ellipse cx="100" cy="118" rx="14" ry="6" fill="#B87333" opacity=".7"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Rings</p>
-          <h3 class="card__title">Copper Twist Ring</h3>
-          <p class="card__price"><strong>P 150</strong> &nbsp; raw copper, handformed</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
-      </div>
-
-      <div class="card" data-category="bracelets" data-reveal>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Charm Chain Bracelet">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <path d="M30 130 Q60 110 100 130 Q140 150 170 130" fill="none" stroke="#C9A96E" stroke-width="3"/>
-            <circle cx="65" cy="120" r="8" fill="#D4849C"/>
-            <circle cx="100" cy="130" r="8" fill="#9B6BBF"/>
-            <circle cx="135" cy="138" r="8" fill="#E8C060"/>
-            <polygon points="50,155 56,168 44,168" fill="#C9A96E"/>
-            <polygon points="120,118 126,131 114,131" fill="#C9A96E"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Bracelets</p>
-          <h3 class="card__title">Charm Chain Bracelet</h3>
-          <p class="card__price"><strong>P 265</strong> &nbsp; customisable charms</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
-      </div>
-
-      <div class="card" data-category="gifts" data-reveal>
-        <div class="card__img-wrap placeholder-svg">
-          <svg viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" role="img" aria-label="Earth Stone Duo Set">
-            <rect width="200" height="260" fill="#F4E8EE"/>
-            <rect x="45" y="90" width="110" height="130" rx="4" fill="#3A2030" opacity=".85"/>
-            <rect x="52" y="97" width="96" height="116" rx="3" fill="#5C2B44" opacity=".6"/>
-            <circle cx="100" cy="145" r="28" fill="#8B4A6B" opacity=".7"/>
-            <circle cx="100" cy="143" r="16" fill="#C9A96E" opacity=".8"/>
-            <text x="100" y="195" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-family="serif" font-size="9" font-style="italic">Earth &amp; Stone</text>
-          </svg>
-        </div>
-        <div class="card__body">
-          <p class="card__category">Gift Sets</p>
-          <h3 class="card__title">Earth Stone Duo Set</h3>
-          <p class="card__price"><strong>P 540</strong> &nbsp; ring + necklace pairing</p>
-        </div>
-        <a href="contact.html" class="card__cta">Enquire Now</a>
-      </div>
-
-    </div><!-- /product-grid -->
-  </div>
-</section>
-
-<!-- CUSTOM ORDER BANNER -->
-<section class="cta-banner" style="padding:72px 0">
-  <div class="cta-banner__content" data-reveal>
-    <p class="eyebrow" style="color:rgba(201,169,110,0.85)">Bespoke jewellery</p>
-    <h2 style="font-size:2.4rem">Want something truly unique?</h2>
-    <p>We take custom orders — bring your vision and we'll craft a one-of-a-kind piece, just for you.</p>
-    <a href="contact.html" class="btn btn-ghost">Request Custom Piece</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div>
-        <p class="footer__brand-name">Just-Jewels</p>
-        <p class="footer__tagline">Handcrafted artisan jewellery made from ethically sourced materials. Each piece is unique — just like you.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-      <div>
-        <p class="footer__col-title">Navigate</p>
-        <nav class="footer__links">
-          <a href="index.html">Home</a>
-          <a href="about.html">About Us</a>
-          <a href="collection.html">Collection</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-      <div>
-        <p class="footer__col-title">Categories</p>
-        <nav class="footer__links">
-          <a href="collection.html">Necklaces</a>
-          <a href="collection.html">Bracelets</a>
-          <a href="collection.html">Earrings</a>
-          <a href="collection.html">Rings</a>
-          <a href="collection.html">Gift Sets</a>
-        </nav>
-      </div>
-      <div>
-        <p class="footer__col-title">Contact</p>
-        <div class="footer__links">
-          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-right:8px"></i>Plot 123, Gaborone, Botswana</span>
-          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-envelope" style="color:var(--gold);margin-right:8px"></i>hello@just-jewels.com</span>
-          <span style="font-size:.85rem;color:rgba(255,255,255,.55)"><i class="fas fa-phone" style="color:var(--gold);margin-right:8px"></i>+267 71 234 567</span>
-        </div>
+  <div class="footer__grid">
+    <div>
+      <span class="footer__logo">Just-Jewels</span>
+      <p class="footer__tagline">Handcrafted artisan jewellery made from ethically sourced materials. Each piece is unique — just like you.</p>
+    </div>
+    <div>
+      <p class="footer__title">Categories</p>
+      <nav class="footer__links">
+        <a href="collection.html">Necklaces</a>
+        <a href="collection.html">Bracelets</a>
+        <a href="collection.html">Earrings</a>
+        <a href="collection.html">Rings</a>
+        <a href="collection.html">Gift Sets</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__title">Contact</p>
+      <div class="footer__links">
+        <span style="font-size:.83rem;color:rgba(255,255,255,.55)">Plot 123, Gaborone</span>
+        <span style="font-size:.83rem;color:rgba(255,255,255,.55)">hello@just-jewels.com</span>
+        <span style="font-size:.83rem;color:rgba(255,255,255,.55)">+267 78 680 374</span>
       </div>
     </div>
-    <div class="footer__bottom">
-      <span>&copy; 2026 Just-Jewels. All rights reserved.</span>
-      <span>Designed &amp; developed for BAC WMD Assignment 2026</span>
-    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>&copy; 2026 Just-Jewels. All rights reserved.</span>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/main.js"></script>
-<script>
-  function filterProducts(btn, category) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const cards = document.querySelectorAll('#productGrid .card');
-    let visible = 0;
-    cards.forEach(card => {
-      const match = category === 'all' || card.dataset.category === category;
-      card.classList.toggle('hidden', !match);
-      if (match) visible++;
-    });
-    document.getElementById('productCount').textContent = visible + ' piece' + (visible !== 1 ? 's' : '');
-  }
-</script>
 </body>
 </html>
