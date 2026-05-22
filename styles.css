@@ -1,104 +1,56 @@
-* {
+/ *index home-page* /
+
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
-
-body {
-  background-color: #fff;
-  color: #333;
-}
-
-/* Header */
-.nav-top {
-  background-color: #5a2a82; /* dark purple */
-  color: white;
+.navbar{
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-}
-
-.nav-top nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 25px;
-  font-size: 15px;
-}
-
-.nav-top nav a.active {
-  text-decoration: underline;
-}
-
-.tagline {
-  background-color: #9b59b6; /* light purple */
-  color: white;
-  text-align: center;
   padding: 20px;
-  font-style: italic;
-  font-size: 18px;
 }
-
-/* Story Section */
-.story {
+nav{
+  flex: 1;
+  text-align: right;
+}
+nav ul{
+  display: inline-block;
+  list-style-type: none;
+}
+nav ul li{
+  display: inline-block;
+  margin-right: 20px;
+}
+a{
+  text-decoration: none;
+  color: blueviolet;
+}
+p{
+  color: blueviolet;
+}
+.container{
+  max-width: 1300px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.row{
   display: flex;
   align-items: center;
-  gap: 30px;
-  padding: 40px;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
-
-.story-img img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
+.col-1{
+  flex-basis: 50%;
+  min-width: 300px;
 }
-
-.story-text h3 {
-  font-size: 16px;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
+.col-1 img{
+  max-width: 100%;
+  padding: 50px;
 }
-
-.story-text p {
-  font-size: 18px;
-  font-style: italic;
-}
-
-/* Artisans Section */
-.artisans {
-  padding: 40px;
-  text-align: left;
-}
-
-.artisans h3 {
-  font-size: 16px;
-  letter-spacing: 1px;
-  margin-bottom: 25px;
-}
-
-.artisan-grid {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.artisan {
-  flex: 1;
-  min-width: 200px;
-  text-align: center;
-}
-
-.artisan img {
-  width: 100%;
-  max-width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.artisan p {
-  margin-top: 10px;
-  font-size: 14px;
+.col-1 h1{
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
 }
